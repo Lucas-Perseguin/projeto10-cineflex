@@ -1,7 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
+import Filme from "./Filme.js";
 import Header from "./Header.js"
 import LoadingPage from "./LoadingPage.js";
+
+const ContainerFilmes = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+    margin-top: 67px;
+`
 
 function Filmes() {
     const [filmes, setFilmes] = useState({})
@@ -10,20 +21,24 @@ function Filmes() {
         const promisse = axios.get('https://mock-api.driven.com.br/api/v5/cineflex/movies');
         promisse.then((response) => {
             setFilmes(response.data);
+            console.log(response.data);
         });
         promisse.catch((error) => {
-            alert(error.status);
+            console.log(error.status);
             setReceivedError(true);
         });
     }, []);
     if (!receivedError && filmes.length === 0){
-        return(
+        return (
             <LoadingPage text='Carregando os filmes que estão no cinema mais próximo a você!' />
         );
     }
-    return(
+    return (
         <>
             <Header />
+            <ContainerFilmes>
+                {filmes.map((filme) => <Filme filme={filme}/>)}
+            </ContainerFilmes>
         </>
     );
 }

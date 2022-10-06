@@ -26,6 +26,9 @@ const HeaderStyled = styled.div`
     height: 36px;
     width: 36px;
   }
+  ion-icon:hover{
+    cursor: pointer;
+  }
 `
 
 function Header() {
