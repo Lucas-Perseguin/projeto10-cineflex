@@ -11,6 +11,7 @@ const ContainerSessoes = styled.div`
     margin-top: 67px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 `
 
 const FilmeDados = styled.div`

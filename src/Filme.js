@@ -4,7 +4,7 @@ import styled from "styled-components";
 const FilmeStyled = styled.div`
     width: 129px;
     height: 193px;
-    background: url({urlFilme});
+    background: url(${(props) => props.urlFilme});
     position: relative;
     h1{
         position: absolute;
@@ -25,7 +25,7 @@ const FilmeStyled = styled.div`
 
 function Filme({filme}) {
     return (
-        <Link to={`/filme/${filme.id}`}>
+        <Link to={`/filme/${filme.id}`} key={filme.id} >
             <FilmeStyled urlFilme={filme.posterURL} >
                 <h1>{filme.title}</h1>
             </FilmeStyled>
