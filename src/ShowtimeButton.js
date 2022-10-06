@@ -12,7 +12,7 @@ const StyledButton = styled.button`
     }
 `
 
-function ShowTimeButton({showtime}) {
+function ShowTimeButton({ showtime }) {
     return (
         <Link to={`/sessao/${showtime.id}`}>
             <StyledButton>{showtime.name}</StyledButton>
@@ -20,4 +20,4 @@ function ShowTimeButton({showtime}) {
     );
 }
 
-export default ShowTimeButton;s
+export default ShowTimeButton;

@@ -5,14 +5,15 @@ const FilmeStyled = styled.div`
     width: 129px;
     height: 193px;
     background: url(${(props) => props.urlFilme});
+    background-size: contain;
     position: relative;
     h1{
         position: absolute;
         display: none;
         font-size: 20px;
         color: #FFFFFF;
-        bottom: 20px;
-        left: 20px;
+        bottom: 10px;
+        left: 10px;
     }
     :hover h1{
         display: block;
@@ -23,9 +24,9 @@ const FilmeStyled = styled.div`
     }
 `
 
-function Filme({filme}) {
+function Filme({ filme }) {
     return (
-        <Link to={`/filme/${filme.id}`} key={filme.id} >
+        <Link to={`/filme/${filme.id}`} >
             <FilmeStyled urlFilme={filme.posterURL} >
                 <h1>{filme.title}</h1>
             </FilmeStyled>

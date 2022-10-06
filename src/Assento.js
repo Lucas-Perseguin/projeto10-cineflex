@@ -14,7 +14,7 @@ const AssentoStyled = styled.div`
     }
 `
 
-function Assento({assento}) {
+function Assento({ assento }) {
     const [selected, setSelected] = useState(false);
     const color = '#FBE192';
     if (assento.isAvailable && selected) color = '#1AAE9E';

@@ -14,6 +14,7 @@ const HeaderStyled = styled.div`
   font-size: 34px;
   color: #E8833A;
   background: #C3CFD9;
+  z-index: 3;
   h1{
     position: absolute;
     top: calc((67px / 2) - (34px / 2));

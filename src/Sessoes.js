@@ -38,7 +38,7 @@ const FilmeDados = styled.div`
 `
 
 function Sessoes() {
-    const {idFilme} = useParams();
+    const { idFilme } = useParams();
     const [sessoes, setSessoes] = useState({});
     const [receivedError, setReceivedError] = useState(false);
     useEffect(() => {
@@ -51,27 +51,29 @@ function Sessoes() {
             setReceivedError(true);
         });
     }, []);
-    if (!receivedError && sessoes.length === 0){
+    if (!receivedError && sessoes.length === 0) {
         return (
             <LoadingPage text='Carregando sessões disponíveis!' />
         );
     }
-    return (
-        <>
-            <Header />
-            <ContainerSessoes>
-                <FilmeDados>
-                    <img src={sessoes.posterURL} />
-                    <div>
-                        <h1>{sessoes.title}</h1>
-                        <p>{sessoes.overview}</p>
-                    </div>
-                </FilmeDados>
-                {sessoes.days.map((dia) => <DiaSessao dia={dia} />)}
-            </ContainerSessoes>
-            <Footer poster={sessoes.posterURL} title={sessoes.title} sessao={null} />
-        </>
-    );
+    else if (!receivedError && sessoes.length > 0) {
+        return (
+            <>
+                <Header />
+                <ContainerSessoes>
+                    <FilmeDados>
+                        <img src={sessoes.posterURL} />
+                        <div>
+                            <h1>{sessoes.title}</h1>
+                            <p>{sessoes.overview}</p>
+                        </div>
+                    </FilmeDados>
+                    {sessoes.days.map((dia) => <DiaSessao dia={dia} key={dia.id} />)}
+                </ContainerSessoes>
+                <Footer poster={sessoes.posterURL} title={sessoes.title} sessao={null} />
+            </>
+        );
+    }
 }
 
 export default Sessoes;

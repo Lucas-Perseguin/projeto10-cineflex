@@ -29,20 +29,20 @@ const FooterStyled = styled.div`
     }
 `
 
-function Footer({poster, title, sessao}) {
+function Footer({ poster, title, sessao }) {
     let sessaoElement = <></>;
-    if (sessao){
+    if (sessao) {
         sessaoElement = <h2>{sessao}</h2>
     }
     return (
         <FooterStyled>
-                <div>
-                    <img src={poster} />
-                </div>
-                <div>
-                    <h1>{title}</h1>
-                    {sessaoElement}
-                </div>
+            <div>
+                <img src={poster} />
+            </div>
+            <div>
+                <h1>{title}</h1>
+                {sessaoElement}
+            </div>
 
         </FooterStyled>
     );

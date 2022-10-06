@@ -13,6 +13,7 @@ const ContainerFilmes = styled.div`
     width: 100%;
     height: 100%;
     margin-top: 67px;
+    gap: 10px;
 `
 
 function Filmes() {
@@ -29,19 +30,21 @@ function Filmes() {
             setReceivedError(true);
         });
     }, []);
-    if (!receivedError && filmes.length === 0){
+    if (!receivedError && filmes.length === 0) {
         return (
             <LoadingPage text='Carregando os filmes que estão no cinema mais próximo a você!' />
         );
     }
-    return (
-        <>
-            <Header />
-            <ContainerFilmes>
-                {filmes.map((filme) => <Filme filme={filme}/>)}
-            </ContainerFilmes>
-        </>
-    );
+    else if (!receivedError && filmes.length > 0) {
+        return (
+            <>
+                <Header />
+                <ContainerFilmes>
+                    {filmes.map((filme) => <Filme filme={filme} key={filme.id} />)}
+                </ContainerFilmes>
+            </>
+        );
+    }
 }
 
 export default Filmes;

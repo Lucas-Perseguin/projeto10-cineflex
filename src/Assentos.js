@@ -63,7 +63,7 @@ const BotaoSelecionarAssentos = styled.button`
 `
 
 function Assentos() {
-    const {idSessao} = useParams();
+    const { idSessao } = useParams();
     const [assentos, setAssentos] = useState({});
     const [receivedError, setReceivedError] = useState(false);
     useEffect(() => {
@@ -76,7 +76,7 @@ function Assentos() {
             setReceivedError(true);
         });
     }, []);
-    if (!receivedError && assentos.length === 0){
+    if (!receivedError && assentos.length === 0) {
         return (
             <LoadingPage text='Carregando assentos da sessão!' />
         );
@@ -109,7 +109,7 @@ function Assentos() {
                 <input name="cpf" placeholder="Insira o CPF do comprador" type="text" />
                 <BotaoSelecionarAssentos>Reservar assento(s)</BotaoSelecionarAssentos>
             </AssentosStyled>
-            <Footer poster={sessoes.movie.posterURL} title={assentos.movie.title} sessao={assentos.day.weekday + assentos.name} />
+            <Footer poster={assentos.movie.posterURL} title={assentos.movie.title} sessao={assentos.day.weekday + assentos.name} />
         </>
     );
 }
