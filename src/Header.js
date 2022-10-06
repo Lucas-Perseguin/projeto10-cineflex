@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 
-const HeaderStyle = styled.div`
+const HeaderStyled = styled.div`
   display: block;
   position: fixed;
   top: 0;
@@ -31,10 +31,10 @@ const HeaderStyle = styled.div`
 function Header() {
     const navigate = useNavigate()
     return(
-        <HeaderStyle>
+        <HeaderStyled>
             <ion-icon name="arrow-back-circle-outline" onClick={() => navigate(-1)}></ion-icon>
             <h1>CINEFLEX</h1>
-        </HeaderStyle>
+        </HeaderStyled>
     );
 }
 
