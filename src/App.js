@@ -1,24 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import styled from 'styled-components';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+
+const Header = styled.div`
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 375px;
+  height: 67px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 34px;
+  text-align: center;
+  line-height: 67px;
+  color: #E8833A;
+  background: #C3CFD9;
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header>
+        CINEFLEX
+      </Header>
+    </>
   );
 }
 
