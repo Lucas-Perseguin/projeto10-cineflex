@@ -2,8 +2,10 @@ import Header from "./Header.js"
 
 function Filmes() {
     return(
-        <Header />
-    )
+        <>
+            <Header />
+        </>
+    );
 }
 
 export default Filmes;
