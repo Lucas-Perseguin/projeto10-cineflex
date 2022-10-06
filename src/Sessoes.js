@@ -25,7 +25,7 @@ const FilmeDados = styled.div`
         width: 200px;
         word-break: break-all;
         word-wrap: break-word;
-        color: #FFFFFF;
+        color: #000000;
         h1{
             font-size: 28px;
             font-weight: 800;
@@ -42,9 +42,11 @@ function Sessoes() {
     const [sessoes, setSessoes] = useState({});
     const [receivedError, setReceivedError] = useState(false);
     useEffect(() => {
+        console.log('ola')
         const promisse = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`);
         promisse.then((response) => {
             setSessoes(response.data);
+            console.log(response.data)
         });
         promisse.catch((error) => {
             alert(error.status);
@@ -56,13 +58,13 @@ function Sessoes() {
             <LoadingPage text='Carregando sessões disponíveis!' />
         );
     }
-    else if (!receivedError && sessoes.length > 0) {
+    else if (!receivedError && sessoes.days.length > 0) {
         return (
             <>
                 <Header />
                 <ContainerSessoes>
                     <FilmeDados>
-                        <img src={sessoes.posterURL} />
+                        <img src={sessoes.posterURL} alt="Poster do filme" />
                         <div>
                             <h1>{sessoes.title}</h1>
                             <p>{sessoes.overview}</p>

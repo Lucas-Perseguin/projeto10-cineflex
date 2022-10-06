@@ -14,6 +14,7 @@ const AssentosStyled = styled.div`
     flex-wrap: wrap;
     width: 100%;
     height: 100%;
+    margin-top: 67px;
     input{
         width: 80%;
         height: 51px;
@@ -70,48 +71,51 @@ function Assentos() {
         const promisse = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`);
         promisse.then((response) => {
             setAssentos(response.data);
+            console.log(response.data)
         });
         promisse.catch((error) => {
             alert(error.status);
             setReceivedError(true);
         });
     }, []);
-    if (!receivedError && assentos.length === 0) {
+    if (!receivedError && !('seats' in assentos)) {
         return (
             <LoadingPage text='Carregando assentos da sessão!' />
         );
     }
-    return (
-        <>
-            <Header />
-            <AssentosStyled>
-                <h1>Selecione o(s) assento(s)</h1>
-                <BotoesAssentos>
-                    {assentos.seats.map((assento) => <Assento assento={assento} />)}
-                </BotoesAssentos>
-                <LegendaAssentos>
-                    <Legenda color="#1AAE9E">
-                        <div></div>
-                        <h2>Selecionado</h2>
-                    </Legenda>
-                    <Legenda color="#C3CFD9">
-                        <div></div>
-                        <h2>Disponível</h2>
-                    </Legenda>
-                    <Legenda color="#FBE192">
-                        <div></div>
-                        <h2>Indisponível</h2>
-                    </Legenda>
-                </LegendaAssentos>
-                <label for="nome">Nome do comprador</label>
-                <input name="nome" placeholder="Insira o nome do comprador" type="text" />
-                <label for="cpf">CPF do comprador</label>
-                <input name="cpf" placeholder="Insira o CPF do comprador" type="text" />
-                <BotaoSelecionarAssentos>Reservar assento(s)</BotaoSelecionarAssentos>
-            </AssentosStyled>
-            <Footer poster={assentos.movie.posterURL} title={assentos.movie.title} sessao={assentos.day.weekday + assentos.name} />
-        </>
-    );
+    else if (!receivedError && Array.isArray(assentos.seats)) {
+        return (
+            <>
+                <Header />
+                <AssentosStyled>
+                    <h1>Selecione o(s) assento(s)</h1>
+                    <BotoesAssentos>
+                        {assentos.seats.map((assento) => <Assento assento={assento} />)}
+                    </BotoesAssentos>
+                    <LegendaAssentos>
+                        <Legenda color="#1AAE9E">
+                            <div></div>
+                            <h2>Selecionado</h2>
+                        </Legenda>
+                        <Legenda color="#C3CFD9">
+                            <div></div>
+                            <h2>Disponível</h2>
+                        </Legenda>
+                        <Legenda color="#FBE192">
+                            <div></div>
+                            <h2>Indisponível</h2>
+                        </Legenda>
+                    </LegendaAssentos>
+                    <label htmlFor="nome">Nome do comprador</label>
+                    <input name="nome" placeholder="Insira o nome do comprador" type="text" />
+                    <label htmlFor="cpf">CPF do comprador</label>
+                    <input name="cpf" placeholder="Insira o CPF do comprador" type="text" />
+                    <BotaoSelecionarAssentos>Reservar assento(s)</BotaoSelecionarAssentos>
+                </AssentosStyled>
+                <Footer poster={assentos.movie.posterURL} title={assentos.movie.title} sessao={assentos.day.weekday + assentos.name} />
+            </>
+        );
+    }
 }
 
 export default Assentos;

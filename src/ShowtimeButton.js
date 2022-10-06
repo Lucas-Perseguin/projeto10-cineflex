@@ -13,6 +13,7 @@ const StyledButton = styled.button`
 `
 
 function ShowTimeButton({ showtime }) {
+    console.log(showtime)
     return (
         <Link to={`/sessao/${showtime.id}`}>
             <StyledButton>{showtime.name}</StyledButton>

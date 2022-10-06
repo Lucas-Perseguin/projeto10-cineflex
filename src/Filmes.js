@@ -23,7 +23,6 @@ function Filmes() {
         const promisse = axios.get('https://mock-api.driven.com.br/api/v5/cineflex/movies');
         promisse.then((response) => {
             setFilmes(response.data);
-            console.log(response.data);
         });
         promisse.catch((error) => {
             console.log(error.status);

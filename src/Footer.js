@@ -37,7 +37,7 @@ function Footer({ poster, title, sessao }) {
     return (
         <FooterStyled>
             <div>
-                <img src={poster} />
+                <img src={poster} alt="Poster do filme" />
             </div>
             <div>
                 <h1>{title}</h1>
