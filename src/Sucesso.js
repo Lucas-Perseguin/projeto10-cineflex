@@ -1,7 +1,8 @@
 import Header from "./Header";
 
-function Sucesso() {
-    return(
+function Sucesso({ objetoSucesso }) {
+    console.log(objetoSucesso);
+    return (
         <>
             <Header />
         </>

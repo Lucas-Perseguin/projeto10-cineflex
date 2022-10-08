@@ -19,7 +19,7 @@ const LoadingPageStyled = styled.div`
 function LoadingPage({ text }) {
     return (
         <LoadingPageStyled>
-            <img src={Loader} alt="Símbolo de carreagar tela" class="carregamento-simbolo" />
+            <img src={Loader} alt="Símbolo de carreagar tela" className="carregamento-simbolo" />
             <h1>{text}</h1>
         </LoadingPageStyled>
     );

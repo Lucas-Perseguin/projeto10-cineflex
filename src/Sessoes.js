@@ -37,7 +37,7 @@ const FilmeDados = styled.div`
     }
 `
 
-function Sessoes() {
+function Sessoes({ setObjetoSucesso }) {
     const { idFilme } = useParams();
     const [sessoes, setSessoes] = useState({});
     const [receivedError, setReceivedError] = useState(false);
@@ -46,6 +46,8 @@ function Sessoes() {
         const promisse = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`);
         promisse.then((response) => {
             setSessoes(response.data);
+            const aux = { title: response.data.title };
+            setObjetoSucesso(aux);
             console.log(response.data)
         });
         promisse.catch((error) => {
@@ -53,7 +55,7 @@ function Sessoes() {
             setReceivedError(true);
         });
     }, []);
-    if (!receivedError && sessoes.length === 0) {
+    if (!receivedError && !('days' in sessoes)) {
         return (
             <LoadingPage text='Carregando sessões disponíveis!' />
         );

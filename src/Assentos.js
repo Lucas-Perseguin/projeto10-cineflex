@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Assento from "./Assento";
 import Footer from "./Footer";
@@ -63,21 +63,55 @@ const BotaoSelecionarAssentos = styled.button`
     border-radius: 3px;
 `
 
-function Assentos() {
+function Assentos({ objetoSucesso, setObjetoSucesso }) {
     const { idSessao } = useParams();
     const [assentos, setAssentos] = useState({});
     const [receivedError, setReceivedError] = useState(false);
+    const [assentosSelecionados, setAssentosSelecionados] = useState([]);
+    const [nome, setNome] = useState('');
+    const [cpf, setCpf] = useState('');
+    const navigate = useNavigate();
     useEffect(() => {
         const promisse = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`);
         promisse.then((response) => {
             setAssentos(response.data);
-            console.log(response.data)
         });
         promisse.catch((error) => {
             alert(error.status);
             setReceivedError(true);
         });
     }, []);
+    function handleSubmit() {
+        if (nome && cpf && assentosSelecionados.length > 0) {
+            const submitObject = { ids: assentosSelecionados, name: nome, cpf: cpf };
+            const aux = { ...objetoSucesso };
+            aux.weekday = assentos.day.weekday;
+            aux.date = assentos.day.date;
+            aux.time = assentos.name;
+            aux.name = nome;
+            aux.cpf = cpf;
+            const auxContaAssentos = [...assentosSelecionados];
+            aux.seats = auxContaAssentos.map((id) => {
+                if (id % 50 === 0) {
+                    return 50;
+                }
+                else {
+                    return (id % 50);
+                }
+            });
+            setObjetoSucesso(aux);
+            const promisse = axios.post('https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many', submitObject);
+            promisse.then((response) => {
+                navigate('/sucesso');
+            });
+        }
+        else if (!nome || !cpf) {
+            alert('Insira o nome e o cpf do comprador');
+        }
+        else if (assentosSelecionados.length === 0) {
+            alert('Selecione pelo menos 1 engresso');
+        }
+    }
     if (!receivedError && !('seats' in assentos)) {
         return (
             <LoadingPage text='Carregando assentos da sessão!' />
@@ -90,7 +124,7 @@ function Assentos() {
                 <AssentosStyled>
                     <h1>Selecione o(s) assento(s)</h1>
                     <BotoesAssentos>
-                        {assentos.seats.map((assento) => <Assento assento={assento} />)}
+                        {assentos.seats.map((assento) => <Assento key={assento.id} assento={assento} assentosSelecionados={assentosSelecionados} setAssentosSelecionados={setAssentosSelecionados} />)}
                     </BotoesAssentos>
                     <LegendaAssentos>
                         <Legenda color="#1AAE9E">
@@ -107,10 +141,10 @@ function Assentos() {
                         </Legenda>
                     </LegendaAssentos>
                     <label htmlFor="nome">Nome do comprador</label>
-                    <input name="nome" placeholder="Insira o nome do comprador" type="text" />
+                    <input name="nome" placeholder="Insira o nome do comprador" type="text" onChange={(event) => setNome(event.target.value)} />
                     <label htmlFor="cpf">CPF do comprador</label>
-                    <input name="cpf" placeholder="Insira o CPF do comprador" type="text" />
-                    <BotaoSelecionarAssentos>Reservar assento(s)</BotaoSelecionarAssentos>
+                    <input name="cpf" placeholder="Insira o CPF do comprador" type="text" onChange={(event) => setCpf(event.target.value)} />
+                    <BotaoSelecionarAssentos onClick={() => handleSubmit()} >Reservar assento(s)</BotaoSelecionarAssentos>
                 </AssentosStyled>
                 <Footer poster={assentos.movie.posterURL} title={assentos.movie.title} sessao={assentos.day.weekday + assentos.name} />
             </>
