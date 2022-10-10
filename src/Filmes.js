@@ -12,7 +12,7 @@ const ContainerFilmes = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    div{
+    >div{
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
