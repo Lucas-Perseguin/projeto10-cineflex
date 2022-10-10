@@ -37,7 +37,7 @@ function Header() {
     return(
         <HeaderStyled>
             <ion-icon name="arrow-back-circle-outline" onClick={() => navigate(-1)}></ion-icon>
-            <h1>CINEFLEX</h1>
+            <h1 onClick={() => navigate('/')}>CINEFLEX</h1>
         </HeaderStyled>
     );
 }

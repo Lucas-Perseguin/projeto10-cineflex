@@ -10,6 +10,7 @@ const FilmeStyled = styled.div`
     h1{
         position: absolute;
         display: none;
+        word-wrap: break-word;
         font-size: 20px;
         color: #FFFFFF;
         bottom: 10px;

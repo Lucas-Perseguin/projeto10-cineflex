@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const FooterStyled = styled.div`
     display: flex;
+    gap: 10px;
     width: 100%;
     height: 117px;
     background: #DFE6ED;
@@ -9,9 +10,14 @@ const FooterStyled = styled.div`
     position: fixed;
     bottom: 0;
     left: 0;
-    div:first-of-type{ 
+    box-sizing: border-box;
+    padding: 10px 0 0 10px;
+    div:first-of-type{
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 64px;
-        height: 89px;
+        height: 90px;
         background: #FFFFFF;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
         border-radius: 2px;
@@ -22,17 +28,21 @@ const FooterStyled = styled.div`
             height: 72px;
         }
     }
-    h1, h2{
+    h1{
         font-style: normal;
         font-weight: 400;
         font-size: 26px;
     }
+    h2{
+        font-weight: 600;
+        font-size: 24px;
+    }
 `
 
-function Footer({ poster, title, sessao }) {
+function Footer({ poster, title, sessaoDia, sessaoHora }) {
     let sessaoElement = <></>;
-    if (sessao) {
-        sessaoElement = <h2>{sessao}</h2>
+    if (sessaoDia) {
+        sessaoElement = <h2>{sessaoDia} {sessaoHora}</h2>
     }
     return (
         <FooterStyled>

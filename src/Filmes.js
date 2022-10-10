@@ -8,11 +8,12 @@ import LoadingPage from "./LoadingPage.js";
 const ContainerFilmes = styled.div`
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    justify-content: center;
     overflow-y: scroll;
     width: 100%;
     height: 100%;
-    margin-top: 67px;
+    margin-top: 80px;
+    margin-bottom: 40px;
     gap: 10px;
 `
 

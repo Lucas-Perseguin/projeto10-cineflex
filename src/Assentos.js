@@ -14,10 +14,13 @@ const AssentosStyled = styled.div`
     flex-wrap: wrap;
     width: 100%;
     height: 100%;
-    margin-top: 67px;
+    margin-top: 80px;
+    gap: 20px;
+    margin-bottom: 130px;
     input{
         width: 80%;
         height: 51px;
+        margin-top: -10px;
     }
     label{
         font-style: normal;
@@ -29,6 +32,8 @@ const BotoesAssentos = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    width: 86%;
+    max-width: 350px;
 `
 
 const LegendaAssentos = styled.div`
@@ -146,7 +151,7 @@ function Assentos({ objetoSucesso, setObjetoSucesso }) {
                     <input name="cpf" placeholder="Insira o CPF do comprador" type="text" onChange={(event) => setCpf(event.target.value)} />
                     <BotaoSelecionarAssentos onClick={() => handleSubmit()} >Reservar assento(s)</BotaoSelecionarAssentos>
                 </AssentosStyled>
-                <Footer poster={assentos.movie.posterURL} title={assentos.movie.title} sessao={assentos.day.weekday + assentos.name} />
+                <Footer poster={assentos.movie.posterURL} title={assentos.movie.title} sessaoDia={assentos.day.weekday} sessaoHora={assentos.name} />
             </>
         );
     }

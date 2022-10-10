@@ -7,6 +7,7 @@ const SucessoStyled = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
     button{
         width: 225px;
         height: 42px;
@@ -24,7 +25,7 @@ const MenssagemSucesso = styled.div`
     font-weight: 700;
     font-size: 24px;
     color: #247A6B;
-    margin-top: 67px;
+    margin-top: 80px;
 `
 
 const Dados = styled.div`
@@ -52,7 +53,7 @@ function Sucesso({ objetoSucesso }) {
                     </div>
                     <div>
                         <h1>Ingressos</h1>
-                        {objetoSucesso.seats.map((seat) => <p>Assento {seat}</p>)}
+                        {objetoSucesso.seats.map((seat, index) => <p key={index}>Assento {seat}</p>)}
                     </div>
                     <div>
                         <h1>Comprador</h1>

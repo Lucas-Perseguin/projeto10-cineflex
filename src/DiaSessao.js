@@ -1,12 +1,22 @@
+import styled from "styled-components";
 import ShowTimeButton from "./ShowtimeButton";
+
+const ContainerSessao = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+`
 
 function DiaSessao({ dia }) {
     console.log(dia)
     return (
-        <div>
+        <ContainerSessao>
             <h1>{dia.weekday} {dia.date}</h1>
-            {dia.showtimes.map((showtime) => <ShowTimeButton showtime={showtime} key={showtime.id} />)}
-        </div>
+            <div>
+                {dia.showtimes.map((showtime) => <ShowTimeButton showtime={showtime} key={showtime.id} />)}
+            </div>
+        </ContainerSessao>
     );
 }
 
