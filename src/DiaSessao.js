@@ -6,6 +6,11 @@ const ContainerSessao = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 6px;
+    h1{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+    }
 `
 
 function DiaSessao({ dia }) {

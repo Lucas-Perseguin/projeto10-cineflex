@@ -6,15 +6,26 @@ import Header from "./Header.js"
 import LoadingPage from "./LoadingPage.js";
 
 const ContainerFilmes = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    overflow-y: scroll;
+    margin-top: 80px;
     width: 100%;
     height: 100%;
-    margin-top: 80px;
-    margin-bottom: 40px;
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        overflow-y: scroll;
+        margin-bottom: 40px;
+        gap: 10px;
+    }
+    h1{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
 `
 
 function Filmes() {
@@ -40,7 +51,10 @@ function Filmes() {
             <>
                 <Header />
                 <ContainerFilmes>
-                    {filmes.map((filme) => <Filme filme={filme} key={filme.id} />)}
+                    <h1>Selecione o filme</h1>
+                    <div>
+                        {filmes.map((filme) => <Filme filme={filme} key={filme.id} />)}
+                    </div>
                 </ContainerFilmes>
             </>
         );

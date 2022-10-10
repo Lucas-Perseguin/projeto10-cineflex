@@ -16,9 +16,9 @@ const ContainerSessoes = styled.div`
     margin-bottom: 130px;
     gap: 20px;
     >h1{
-        font-size: 24px;
         font-style: normal;
-        font-weight: 800;
+        font-weight: 400;
+        font-size: 24px;
     }
 `
 
@@ -91,7 +91,7 @@ function Sessoes({ setObjetoSucesso }) {
                         </div>
                         <p>{sessoes.overview}</p>
                     </FilmeDados>
-                    <h1>Sessões:</h1>
+                    <h1>Selecione o horário</h1>
                     {sessoes.days.map((dia) => <DiaSessao dia={dia} key={dia.id} />)}
                 </ContainerSessoes>
                 <Footer poster={sessoes.posterURL} title={sessoes.title} sessao={null} />

@@ -13,6 +13,10 @@ const SucessoStyled = styled.div`
         height: 42px;
         background: #E8833A;
         border-radius: 3px;
+        color: #FFFFFF;
+        border: none;
+        font-weight: 400;
+        font-size: 18px;
     }
 `
 
@@ -23,16 +27,29 @@ const MenssagemSucesso = styled.div`
     width: 100%;
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 26px;
     color: #247A6B;
     margin-top: 80px;
+    margin-bottom: 20px;
 `
 
 const Dados = styled.div`
     display: flex;
     flex-direction: column;
     width: 80%;
-    gap: 20px;
+    gap: 30px;
+    margin-bottom: 20px;
+    h1{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+    p{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+    }
 `
 
 function Sucesso({ objetoSucesso }) {

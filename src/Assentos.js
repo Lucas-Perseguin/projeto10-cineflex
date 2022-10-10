@@ -20,7 +20,7 @@ const AssentosStyled = styled.div`
     input{
         width: 80%;
         height: 51px;
-        margin-top: -10px;
+        margin-top: -15px;
     }
     label{
         font-style: normal;
@@ -66,6 +66,10 @@ const BotaoSelecionarAssentos = styled.button`
     height: 42px;
     background: #E8833A;
     border-radius: 3px;
+    color: #FFFFFF;
+    border: none;
+    font-weight: 400;
+    font-size: 18px;
 `
 
 function Assentos({ objetoSucesso, setObjetoSucesso }) {
