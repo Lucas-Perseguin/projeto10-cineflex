@@ -11,6 +11,10 @@ const ContainerSessao = styled.div`
         font-weight: 400;
         font-size: 18px;
     }
+    >div{
+        display: flex;
+        gap: 6px;
+    }
 `
 
 function DiaSessao({ dia }) {

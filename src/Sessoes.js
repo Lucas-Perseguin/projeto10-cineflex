@@ -13,7 +13,7 @@ const ContainerSessoes = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-bottom: 130px;
+    margin-bottom: 200px;
     gap: 20px;
     >h1{
         font-style: normal;
